@@ -17,4 +17,5 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'simplecov'
+  gem 'dotenv'
 end
