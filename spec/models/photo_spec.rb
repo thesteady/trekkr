@@ -5,8 +5,7 @@ describe Photo do
     it { should validate_presence_of(:url) }
     it { should validate_presence_of(:instagram_id) }
     it { should validate_uniqueness_of(:instagram_id) }
-    it { should validate_presence_of(:lat) }
-    it { should validate_presence_of(:long)}
+    it { should validate_presence_of(:location) }
   end
 
   describe '.fetch_photos_from_instagram(lat, long)' do

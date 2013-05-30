@@ -7,12 +7,10 @@
 <h1>Listing photos</h1>
 
 <% @photos.each do |photo| %>
-<%= photo.url %>
-    <%= image_tag(photo.url) %> <br />
-    Lat <%= photo.lat %> 
-    Long <%= photo.long %> <br />
-    <%= link_to 'Show', photo %>
-
+  URL <%= photo.url %>
+  <%= image_tag(photo.url, class:'img') %> <br />
+  Location <%= photo.location %> 
+  <%= link_to 'Show', photo %>
 <% end %>
 
 

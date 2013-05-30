@@ -1,25 +1,26 @@
 class Photo
   include Mongoid::Document
+  include Mongoid::Timestamps
+  include Mongoid::Geospatial
+
   field :url, type: String
   field :instagram_id, type: String
   field :height, type: Integer
-  field :lat, type: String
-  field :long, type: String
+  geo_field :location
   field :_id, type: String, default: ->{ instagram_id }
 
-  attr_accessible :url, :instagram_id, :height, :lat, :long
+  attr_accessible :url, :instagram_id, :height, :location
 
   validates :url, presence: true
   validates :instagram_id, presence: true
   validates :instagram_id, uniqueness: true
-  validates :lat, presence: true
-  validates :long, presence: true
+  validates :location, presence: true
 
+  spatial_index :location
 
   Instagram.configure do |config|
     config.client_id = ENV['CLIENT_ID']
     config.client_secret = ENV['CLIENT_SECRET']
-    # config.access_token = ENV['ACCESS_TOKEN']
   end
 
   def self.fetch_from_instagram(lat, long)
@@ -29,8 +30,7 @@ class Photo
                 instagram_id: result.id,
                 url: result.images.standard_resolution.url,
                 height: result.images.standard_resolution.height,
-                lat: result.location.latitude,
-                long: result.location.longitude
+                location: [result.location.longitude, result.location.latitude]
               )
     end
   end

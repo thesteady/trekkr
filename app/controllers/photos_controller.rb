@@ -2,6 +2,7 @@ class PhotosController < ApplicationController
 
   def index
     @photos = Photo.all.to_a
+    puts "#{@photos.inspect}"
   end
 
   def callback
