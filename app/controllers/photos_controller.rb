@@ -13,4 +13,7 @@ class PhotosController < ApplicationController
     Photo.fetch_from_instagram(params[:search])
     redirect_to root_path
   end
+
+  def callback
+  end
 end

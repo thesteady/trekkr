@@ -17,3 +17,5 @@
 #Ignore simplecov
 coverage
 /coverage
+
+.env
