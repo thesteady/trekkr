@@ -19,3 +19,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'dotenv-rails'
 end
+
+group :test do
+  gem 'mongoid-rspec'
+end

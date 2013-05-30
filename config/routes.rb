@@ -1,5 +1,5 @@
 Trekkr::Application.routes.draw do
-  resources :photos, only: [:new, :create]
+  resources :photos, only: [:new, :create, :show]
 
   match '/callback', to: "photos#callback"
   

@@ -15,24 +15,12 @@ describe PhotosController do
     end
   end
 
-  describe 'GET#new' do
-    it 'renders the new form template' do
-      get :new
-      expect(response).to be_success
-      expect(response).to render_template(:new)
-    end
-  end
-
-  describe "POST#create" do
-    it 'retrieves new photos from instagram' do
-      pending
-      # post :create, search: 'flower'
-
+  describe 'GET#show' do
+    it 'assigns the photo variable' do
+      photo = Photo.create(url: 'example.com', instagram_id: '12345', height: '644')
+      expect(assigns(@photo)).to eq photo
     end
 
-    it 'redirects to the show page' do
-      pending
-      # expect(response).to redirect_to(photo_show_path(@photo))
-    end
+
   end
 end

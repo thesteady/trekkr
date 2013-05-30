@@ -1,6 +1,14 @@
 require 'spec_helper'
 
 describe Photo do
+  describe 'valid photo' do
+    it { should validate_presence_of(:url) }
+    it { should validate_presence_of(:instagram_id) }
+    it { should validate_uniqueness_of(:instagram_id) }
+    it { should validate_presence_of(:lat) }
+    it { should validate_presence_of(:long)}
+  end
+
   describe '.fetch_photos_from_instagram(lat, long)' do
     context 'when there are photos' do
       it 'adds photos to the database from an instagram search' do
