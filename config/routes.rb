@@ -1,3 +1,4 @@
 Trekkr::Application.routes.draw do
- root to: 'photos#index'
+  resources :photos, only: [:new, :create]
+  root to: 'photos#index'
 end
