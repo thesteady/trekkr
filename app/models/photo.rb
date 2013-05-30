@@ -3,9 +3,11 @@ class Photo
   field :url, type: String
   field :instagram_id, type: String
   field :height, type: Integer
+  field :lat, type: String
+  field :long, type: String
   field :_id, type: String, default: ->{ instagram_id }
 
-  attr_accessible :url, :instagram_id, :height
+  attr_accessible :url, :instagram_id, :height, :lat, :long
 
   validates :url, presence: true
   validates :instagram_id, presence: true
@@ -28,7 +30,7 @@ class Photo
                 url: result.images.standard_resolution.url,
                 height: result.images.standard_resolution.height,
                 lat: result.location.latitude,
-                long: resut.location.longitude
+                long: result.location.longitude
               )
     end
   end

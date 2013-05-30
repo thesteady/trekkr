@@ -8,6 +8,6 @@ class PhotosController < ApplicationController
   end
 
   def show
-    # @photo = Photo
+    @photo = Photo.where( _id: params[:id]).first
   end
 end
