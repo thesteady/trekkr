@@ -1,6 +1,6 @@
-Trekkr
+#Trekkr
+###Go Take a Hike (virtually)!
+*a gSchool Project by Laura Steadman*
 
-Go Take a Hike (virtually)!
-
-
-by Laura Steadman
+Would you like to go for a long hike, but your busy schedule and faulty knees just can't handle it?
+With Trekkr, you can live vicariously through Instagram-wielding hikers.

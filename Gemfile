@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 gem 'mongoid'
+gem 'mongoid_geospatial'
 gem 'instagram'
 
 group :assets do
