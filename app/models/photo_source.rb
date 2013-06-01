@@ -17,11 +17,6 @@ module PhotoSource
     # page_2 = Instagram.user_recent_media(777, :max_id => page_2_max_id ) unless page_2_max_id.nil?
   end
 
-  def self.get_min_id(results)
-    ids = results.collect { |result| result.id }
-
-  end
-
   def self.long_lat(result)
     [result.location.longitude, result.location.latitude]
   end
