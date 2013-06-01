@@ -24,11 +24,17 @@ class Photo
 
 
   def self.to_geojson
-    features = Photo.where(:location.exists => true).collect do |photo|
+    photos = Photo.where(:location.exists => true)
+    # photos = Photo.all.to_a
+    
+    puts "PHOTOS #{photos.inspect}"
+    features = photos.collect do |photo|
       make_geojson_feature(photo)
     end
     #the marker color issue here with the hashes might be a problem
-    {type: 'FeatureCollection', features: features}
+    # do i need to call to json on this whole thing to fix it???
+
+    {type: 'FeatureCollection', features: features}.to_json
   end
 
   def self.make_geojson_feature(photo)

@@ -2,7 +2,9 @@ class PhotosController < ApplicationController
 
   def index
     @photos = Photo.all.to_a
-    puts "#{@photos.inspect}"
+    @geojson = Photo.to_geojson
+
+    puts "#{@geojson.inspect}"
   end
 
   def callback
