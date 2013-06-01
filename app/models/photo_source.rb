@@ -8,6 +8,18 @@ module PhotoSource
   def self.fetch_tagged_photos_for(tag)
     results = Instagram.tag_recent_media(tag)
     parse_(results)
+    # I actually want to parse through all the results, multiple pages.
+    # UNLESS I already have them.
+
+    # example from gem
+    # page_1 = Instagram.user_recent_media(777)
+    # page_2_max_id = page_1.pagination.next_max_id
+    # page_2 = Instagram.user_recent_media(777, :max_id => page_2_max_id ) unless page_2_max_id.nil?
+  end
+
+  def self.get_min_id(results)
+    ids = results.collect { |result| result.id }
+
   end
 
   def self.long_lat(result)
