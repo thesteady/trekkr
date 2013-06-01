@@ -8,30 +8,19 @@ class Photo
   field :height, type: Integer
   geo_field :location
   field :_id, type: String, default: ->{ instagram_id }
-
-  attr_accessible :url, :instagram_id, :height, :location
+  spatial_index :location
 
   validates :url, presence: true
   validates :instagram_id, presence: true
   validates :instagram_id, uniqueness: true
-  validates :location, presence: true
 
-  spatial_index :location
+  attr_accessible :url, :instagram_id, :height, :location
 
-  Instagram.configure do |config|
-    config.client_id = ENV['CLIENT_ID']
-    config.client_secret = ENV['CLIENT_SECRET']
-  end
 
-  def self.fetch_from_instagram(lat, long)
-    results = Instagram.media_search(lat, long)
-    results.each do |result|
-      Photo.create(
-                instagram_id: result.id,
-                url: result.images.standard_resolution.url,
-                height: result.images.standard_resolution.height,
-                location: [result.location.longitude, result.location.latitude]
-              )
-    end
+
+
+  def self.get_new_photos(tag)
+    results = PhotoSource.fetch_tagged_photos_for(tag)
+    results.each { |result| Photo.create(result) }
   end
 end
