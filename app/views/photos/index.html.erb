@@ -1,5 +1,12 @@
 <div class='content'>
-  <div id="map" class='dark'></div>
+  <div id="map" class='dark' data='<%= @geojson %>'></div>
+
+
+  <%= content_tag "div", id: 'huh', data:{points: @geojson} do %>
+    poinnttssssss
+  <% end %>
+
+GEOJSON <%= puts @geojson %>
 
   <hr>
 
