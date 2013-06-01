@@ -1,17 +1,59 @@
-<div class="map">
-  Map Goes Here
+<div class='content'>
+  <div id="map" class='dark'></div>
+
+  <hr>
+
+  <h1>Listing photos</h1>
+
+  <% @photos.each do |photo| %>
+    URL <%= photo.url %>
+    <%= image_tag(photo.url, class:'img') %> <br />
+    Location <%= photo.location %> 
+    <%= link_to 'Show', photo %>
+    <br />
+  <% end %>
+
 </div>
 
-<hr>
 
-<h1>Listing photos</h1>
+  <script type='text/javascript'>
+  var map = L.mapbox.map('map', 'examples.map-y7l23tes')
+      .setView([37.9, -77], 5);
+  
+  // The GeoJSON representing the two point features
+var geoJson = {
+    type: 'FeatureCollection',
+    features: [{
+        type: 'Feature',
+        properties: {
+            title: 'Washington, D.C.',
+            'marker-color': '#fff',
+            'marker-size': 'small',
+            url: 'http://en.wikipedia.org/wiki/Washington,_D.C.'
+        },
+        geometry: {
+            type: 'Point',
+            coordinates: [-77.03201, 38.90065]
+        }
+    },
+    {
+        type: 'Feature',
+        properties: {
+            title: 'Baltimore, MD',
+            'marker-color': '#f00',
+            'marker-size': 'large',
+            url: 'http://en.wikipedia.org/wiki/Baltimore'
+        },
+        geometry: {
+            type: 'Point',
+            coordinates: [-76.60767, 39.28755]
+        }
+    }]
+};
 
-<% @photos.each do |photo| %>
-  URL <%= photo.url %>
-  <%= image_tag(photo.url, class:'img') %> <br />
-  Location <%= photo.location %> 
-  <%= link_to 'Show', photo %>
-<% end %>
+  map.markerLayer.setGeoJSON(geoJson);
 
+ 
+    
 
-<br />
+  </script>

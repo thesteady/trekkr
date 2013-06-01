@@ -4,6 +4,7 @@ gem 'rails', '3.2.13'
 gem 'mongoid'
 gem 'mongoid_geospatial'
 gem 'instagram'
+gem 'mapbox-rails'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
