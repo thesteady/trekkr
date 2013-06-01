@@ -24,38 +24,39 @@ describe Photo do
 
   describe '.to_geojson' do
     it 'turns all of the photo objects that have coordinates into geojson response' do
-      pending
-      # geojson_example = { type: 'FeatureCollection', 
-      #                     features: [{
-      #                       type: 'Feature', 
-      #                         properties: {
-      #                             title: 'Washington, D.C.',
-      #                             'marker-color': '#fff',
-      #                             'marker-size': 'small',
-      #                             url: 'http://placekitten.com/200/300'
-      #                         },
-      #                         geometry: {
-      #                             type: 'Point',
-      #                             coordinates: [-77.03201, 38.90065]
-      #                         }
-      #                     },
-      #                     {
-      #                         type: 'Feature',
-      #                         properties: {
-      #                             title: 'Baltimore, MD',
-      #                             'marker-color': '#f00',
-      #                             'marker-size': 'large',
-      #                             url: 'http://placekitten.com/200/300'
-      #                         },
-      #                         geometry: {
-      #                             type: 'Point',
-      #                             coordinates: [-76.60767, 39.28755]
-      #                         }
-      #                     }]}
-      #make a photo with coordinates
-      #pass it through the method
-      #what do I expect? a proper geojson response
-      # expect(result).to eq geojson_example
+      geojson_example = { type: 'FeatureCollection', 
+                          features: [{
+                            type: 'Feature', 
+                              properties: {
+                                  username: 'honeybooboo',
+                                  'marker-color'=> '#fff',
+                                  'marker-size'=> 'small',
+                                  url: 'http://placekitten.com/200/300'
+                              },
+                              geometry: {
+                                  type: 'Point',
+                                  coordinates: [-77.03201, 38.90065]
+                              }
+                          },
+                          {
+                              type: 'Feature',
+                              properties: {
+                                  username:'anonymoose',
+                                  'marker-color'=> '#fff',
+                                  'marker-size'=> 'small',
+                                  url: 'http://placekitten.com/200/200'
+                              },
+                              geometry: {
+                                  type: 'Point',
+                                  coordinates: [-76.60767, 39.28755]
+                              }
+                          }]}
+                          
+      Photo.create(username: 'honeybooboo', url: 'http://placekitten.com/200/300', text: 'what', instagram_id: '111', _id: '111', location:[-77.03201, 38.90065] )
+      Photo.create(username: 'anonymoose', url: 'http://placekitten.com/200/200', text: 'huh', instagram_id: '222', _id: '222', location:[-76.60767, 39.28755] )
+      
+      result = Photo.to_geojson
+      expect(result).to eq geojson_example
     end
 
     it 'does not include objects that dont have coordinates' do

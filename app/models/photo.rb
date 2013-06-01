@@ -21,13 +21,30 @@ class Photo
   attr_accessible :url, :instagram_id, :height, :location, :username, :text
 
 
-  #to geojson list:
-  #get only the photos with coordinates
 
-  #Photo.where(:location.exists => true)
-  
-  #take this array, turn it into geojson
-  #send it to js for mapping (via controller)
+
+  def self.to_geojson
+    features = Photo.where(:location.exists => true).collect do |photo|
+      make_geojson_feature(photo)
+    end
+    #the marker color issue here with the hashes might be a problem
+    {type: 'FeatureCollection', features: features}
+  end
+
+  def self.make_geojson_feature(photo)
+    { type: 'Feature',
+      properties: {
+                    username: photo.username,
+                    'marker-color'=> '#fff',
+                    'marker-size'=> 'small',
+                    url: photo.url
+                  },
+      geometry: {
+                  type: 'Point',
+                  coordinates: [photo.location.x, photo.location.y]
+                }
+    }
+  end
 
   def self.get_new_photos(tag)
     results = PhotoSource.fetch_tagged_photos_for(tag)
