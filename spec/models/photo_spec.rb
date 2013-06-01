@@ -3,6 +3,8 @@ require 'spec_helper'
 describe Photo do
   describe 'valid photo' do
     it { should validate_presence_of(:url) }
+    it { should validate_presence_of(:username) }
+    it { should validate_presence_of(:text) }
     it { should validate_presence_of(:instagram_id) }
     it { should validate_uniqueness_of(:instagram_id) }
   end
@@ -12,10 +14,11 @@ describe Photo do
       #whats a better way to test this?
       tag = 'coloradotrail'
       Photo.get_new_photos(tag)
+
       first_result = Photo.first
-      puts "#{first_result.inspect}"
       expect(Photo.all.count).to_not eq 0
-      expect(first_result.username).to be 'unospeeder'
+      # expect(first_result.username).to eq 'unospeeder'
+      expect(first_result.text).to include('#coloradotrail')
     end
   end
 
