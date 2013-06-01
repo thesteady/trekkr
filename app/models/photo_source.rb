@@ -27,11 +27,7 @@ module PhotoSource
   end
 
   def self.parse_(results)
-    puts "#{results.first.inspect}"
-    puts "\n USERNAME: #{results.first.caption.from.username }"
-    puts "\n TEXT: #{results.first.caption.text.inspect}"
-
-    parsed_results = results.collect do |result|
+    results.collect do |result|
       a = { instagram_id: result.id,
         url: result.images.standard_resolution.url,
         height: result.images.standard_resolution.height,
@@ -39,7 +35,7 @@ module PhotoSource
         text: result.caption.text,
         }
       
-      a.merge( {location: long_lat(result)} ) if result.location.present?
+       a.merge( {location: long_lat(result)} ) if result.location.present?
     end
   end
 end
