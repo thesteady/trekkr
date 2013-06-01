@@ -6,6 +6,6 @@ describe 'Visitor Views the Home Page' do
 
     visit root_path
     expect(page).to have_selector('.img')
-    expect(page).to have_selector('.map')
+    expect(page).to have_selector('#map')
   end
 end

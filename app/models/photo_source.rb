@@ -27,6 +27,10 @@ module PhotoSource
   end
 
   def self.parse_(results)
+    puts "#{results.first.inspect}"
+    puts "\n USERNAME: #{results.first.caption.from.username }"
+    puts "\n TEXT: #{results.first.caption.text.inspect}"
+
     parsed_results = results.collect do |result|
       a = { instagram_id: result.id,
         url: result.images.standard_resolution.url,
