@@ -1,28 +1,21 @@
-<div class='content'>
-  <div id="map" class='dark' data-points='<%= @geojson %>'></div>
+<div id="map" class='dark' data-points='<%= @geojson %>'></div>
 
-  <hr>
 
-  <h1>Listing photos</h1>
 
-  <% @photos.each do |photo| %>
-    URL <%= photo.url %>
-    <%= image_tag(photo.url, class:'img') %> <br />
-    Location <%= photo.location %> 
-    <%= link_to 'Show', photo %>
-    <br />
-  <% end %>
 
-</div>
 
+
+  
   <script type='text/javascript'>
 
+  // sets up the map base
   var map = L.mapbox.map('map', 'examples.map-y7l23tes')
       .setView([32.7, -79.9], 5);
  
   // The GeoJSON representing the point features
   var geoJson = $('#map').data('points');
   
+  // Adds the layer of points to the map
   var markerLayer = L.mapbox.markerLayer(geoJson)
     .addTo(map);
 
