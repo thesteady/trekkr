@@ -1,12 +1,5 @@
 <div class='content'>
-  <div id="map" class='dark' data='<%= @geojson %>'></div>
-
-
-  <%= content_tag "div", id: 'huh', data:{points: @geojson} do %>
-    poinnttssssss
-  <% end %>
-
-GEOJSON <%= puts @geojson %>
+  <div id="map" class='dark' data-points='<%= @geojson %>'></div>
 
   <hr>
 
@@ -22,45 +15,15 @@ GEOJSON <%= puts @geojson %>
 
 </div>
 
-
   <script type='text/javascript'>
+
   var map = L.mapbox.map('map', 'examples.map-y7l23tes')
-      .setView([37.9, -77], 5);
-  
-  // The GeoJSON representing the two point features
-var geoJson = {
-    type: 'FeatureCollection',
-    features: [{
-        type: 'Feature',
-        properties: {
-            title: 'Washington, D.C.',
-            'marker-color': '#fff',
-            'marker-size': 'small',
-            url: 'http://en.wikipedia.org/wiki/Washington,_D.C.'
-        },
-        geometry: {
-            type: 'Point',
-            coordinates: [-77.03201, 38.90065]
-        }
-    },
-    {
-        type: 'Feature',
-        properties: {
-            title: 'Baltimore, MD',
-            'marker-color': '#f00',
-            'marker-size': 'large',
-            url: 'http://en.wikipedia.org/wiki/Baltimore'
-        },
-        geometry: {
-            type: 'Point',
-            coordinates: [-76.60767, 39.28755]
-        }
-    }]
-};
-
-  map.markerLayer.setGeoJSON(geoJson);
-
+      .setView([32.7, -79.9], 5);
  
-    
+  // The GeoJSON representing the point features
+  var geoJson = $('#map').data('points');
+  
+  var markerLayer = L.mapbox.markerLayer(geoJson)
+    .addTo(map);
 
   </script>
