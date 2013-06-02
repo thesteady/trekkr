@@ -11,8 +11,8 @@
  *= require_self
  *= require_tree .
  *= require twitter/bootstrap
- *= require bootstrap_and_overrides
  *= require mapbox
+ *= require bootstrap_and_overrides
  */
 
 
