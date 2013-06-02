@@ -18,7 +18,7 @@ describe Photo do
       first_result = Photo.first
       expect(Photo.all.count).to_not eq 0
       # expect(first_result.username).to eq 'unospeeder'
-      expect(first_result.text).to include('#coloradotrail')
+      expect(first_result.text.downcase).to include('#coloradotrail')
     end
   end
 
@@ -54,7 +54,7 @@ describe Photo do
 
       Photo.create(username: 'honeybooboo', url: 'http://placekitten.com/200/300', text: 'what', instagram_id: '111', _id: '111', location:[-77.03201, 38.90065] )
       Photo.create(username: 'anonymoose', url: 'http://placekitten.com/200/200', text: 'huh', instagram_id: '222', _id: '222', location:[-76.60767, 39.28755] )
-      Photo.create (username: 'hey you', url: 'http://placekitten.com/300/300', text: 'who', instagram_id: '333', _id: '333')
+      Photo.create(username: 'hey you', url: 'http://placekitten.com/300/300', text: 'who', instagram_id: '333', _id: '333')
       result = Photo.to_geojson
       expect(result).to eq geojson_example.to_json
     end
