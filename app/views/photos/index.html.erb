@@ -1,4 +1,4 @@
-<div id="map" class='dark' data-points='<%= @geojson %>'></div>
+<div id="map" data-points='<%= @geojson %>'></div>
 
 
 
@@ -9,14 +9,17 @@
   <script type='text/javascript'>
 
   // sets up the map base
-  var map = L.mapbox.map('map', 'examples.map-y7l23tes')
-      .setView([32.7, -79.9], 5);
+  var map = L.mapbox.map('map', 'examples.map-y7l23tes');
  
   // The GeoJSON representing the point features
   var geoJson = $('#map').data('points');
   
   // Adds the layer of points to the map
   var markerLayer = L.mapbox.markerLayer(geoJson)
-    .addTo(map);
 
+  
+
+  markerLayer.addTo(map);
+  
+  map.setView([38.9, -104.87], 7);
   </script>
