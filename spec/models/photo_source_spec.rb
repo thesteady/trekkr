@@ -5,7 +5,6 @@ describe PhotoSource do
     context 'when the response from instagram is good' do
       it 'parses a return from instagram' do
         # I would like to VCR this test.
-        #first result is nil???? why?
         tag = 'coloradotrail'
         results = PhotoSource.fetch_tagged_photos_for(tag)
 

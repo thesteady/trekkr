@@ -18,8 +18,7 @@ class Photo
   validates :text, presence: true
   validates :instagram_id, uniqueness: true
 
-  attr_accessible :url, :instagram_id, :height, :location, :username, :text
-
+  attr_accessible :url, :instagram_id, :height, :location, :text, :username
 
 
 
