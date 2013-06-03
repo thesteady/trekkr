@@ -1,11 +1,6 @@
 <div id="map" data-points='<%= @geojson %>'></div>
 
 
-
-
-
-
-  
   <script type='text/javascript'>
 
   // sets up the map base
@@ -18,9 +13,27 @@
   // Adds the layer of points to the map
   var markerLayer = L.mapbox.markerLayer(geoJson)
 
-  
-
   markerLayer.addTo(map);
+  
+map.markerLayer.on('ready', function(e) {
+    this.eachLayer(function(marker) {
+
+        var feature = marker.feature;
+
+        // Create custom popup content
+        var popupContent = '<img src="' + feature.properties.image + '">' +
+                            '   <h2>' + feature.properties.title + '</h2>';
+
+        // http://leafletjs.com/reference.html#popup
+        marker.bindPopup(popupContent,{
+            closeButton: false,
+            minWidth: 320
+        });
+
+    });
+});
+
+
   
   map.setView([38.9, -104.87], 7);
   </script>
