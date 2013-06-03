@@ -32,9 +32,11 @@ class Photo
     { type: 'Feature',
       properties: {
                     title: photo.username,
+                    url: photo.url,
+                    description: photo.text,
                     'marker-color'=> '#543511',
-                    'marker-size'=> 'small',
-                    url: photo.url
+                    'marker-size'=> 'small'
+
                   },
       geometry: {
                   type: 'Point',
