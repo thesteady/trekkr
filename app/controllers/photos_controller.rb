@@ -6,8 +6,4 @@ class PhotosController < ApplicationController
 
   def callback
   end
-
-  def show
-    @photo = Photo.where( _id: params[:id]).first
-  end
 end
