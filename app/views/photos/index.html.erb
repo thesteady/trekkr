@@ -3,37 +3,45 @@
 
   <script type='text/javascript'>
 
-  // sets up the map base
+  var configureMap = function() {
+    // sets up the map base
 
-  var map = L.mapbox.map('map', 'thesteady.map-ygc6vvpt');
- 
-  // The GeoJSON representing the point features
-  var geoJson = $('#map').data('points');
-  
-  // Adds the layer of points to the map
-  var markerLayer = L.mapbox.markerLayer(geoJson)
+    var map = L.mapbox.map('map', 'thesteady.map-ygc6vvpt');
+    map.setView([38.9, -104.87], 7);
 
-  markerLayer.addTo(map);
-  
-map.markerLayer.on('ready', function(e) {
-    this.eachLayer(function(marker) {
+    
+    // Adds the layer of points to the map
+    // var markerLayer = L.mapbox.markerLayer(geoJson)
+    // markerLayer.addTo(map);
 
-        var feature = marker.feature;
+    // debugger
 
-        // Create custom popup content
-        var popupContent = '<img src="' + feature.properties.image + '">' +
-                            '   <h2>' + feature.properties.title + '</h2>';
+    map.markerLayer.on('ready', function(e) {
+      // The GeoJSON representing the point features
+      var geoJson = $('#map').data('points');
+      map.markerLayer.setGeoJSON(geoJson);
+    
+      console.log("Working with the map");
+      this.eachLayer(function(marker) {
+          console.log("Working with each layer");
+          var feature = marker.feature;
 
-        // http://leafletjs.com/reference.html#popup
-        marker.bindPopup(popupContent,{
-            closeButton: false,
-            minWidth: 320
-        });
+          // Create custom popup content
+          var popupContent = '<img class="photo" src="' + feature.properties.url + '" width="325">' +
+                              '   <h4>' + feature.properties.title + '</h4>';
 
+          // http://leafletjs.com/reference.html#popup
+          marker.bindPopup(popupContent,{
+              closeButton: false,
+              minWidth: 320
+          });
+
+      });
     });
-});
 
+    
 
+  };
   
-  map.setView([38.9, -104.87], 7);
+  $(document).ready(configureMap);
   </script>
