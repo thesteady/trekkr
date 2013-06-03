@@ -27,8 +27,8 @@
           var feature = marker.feature;
 
           // Create custom popup content
-          var popupContent = '<img class="photo" src="' + feature.properties.url + '" width="325">' +
-                              '   <h4>' + feature.properties.title + '</h4>';
+          var popupContent = '<img class="photo" src="' + feature.properties.url + '" width="325">' + '<h4>' + feature.properties.title + '</h4>' +
+          '<p>' + feature.properties.description +'</p>' ;
 
           // http://leafletjs.com/reference.html#popup
           marker.bindPopup(popupContent,{
