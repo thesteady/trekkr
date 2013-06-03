@@ -31,8 +31,8 @@ class Photo
   def self.make_geojson_feature(photo)
     { type: 'Feature',
       properties: {
-                    username: photo.username,
-                    'marker-color'=> '#444',
+                    title: photo.username,
+                    'marker-color'=> '#543511',
                     'marker-size'=> 'small',
                     url: photo.url
                   },
