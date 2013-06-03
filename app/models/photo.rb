@@ -32,7 +32,7 @@ class Photo
     { type: 'Feature',
       properties: {
                     username: photo.username,
-                    'marker-color'=> '#fff',
+                    'marker-color'=> '#444',
                     'marker-size'=> 'small',
                     url: photo.url
                   },
