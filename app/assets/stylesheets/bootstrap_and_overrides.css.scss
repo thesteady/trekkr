@@ -10,6 +10,14 @@ html,body{
     color: #543511;
     font-weight: bold;
   }
+  
+  p{
+    color: #543511;
+    font-style: italic;
+    font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
+    padding-top: 12px;
+    line-height: 20px;
+  }
 }
 
 .content{
@@ -31,7 +39,11 @@ html,body{
       padding:20px;
       padding-top:40px;
 }
-.leaflet-top.leaflet-left{margin-left: 300px;}
+.leaflet-top.leaflet-left{
+  margin-left: 300px;
+  margin-top: 40px;
+  position: fixed;
+}
 
 .credit{
   font-size: 80%;
