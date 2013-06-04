@@ -6,9 +6,11 @@ html,body{
 }
 
 .container{
+
   a.brand{
     color: #543511;
     font-weight: bold;
+    font-size: 200%;
   }
   
   p{
@@ -17,7 +19,23 @@ html,body{
     font-family: "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif;
     padding-top: 12px;
     line-height: 20px;
+    float: left;
   }
+  .details{
+    float:right;
+    padding-top: 12px;
+    
+    a{
+      color: #2a1a08;
+      font-size:80%;
+      line-height:10px;
+      display:block;
+      padding:0px;
+      margin:0px;
+    }
+    a:hover{text-decoration:none; color:green;}
+  }
+
 }
 
 .content{
