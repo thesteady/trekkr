@@ -1,47 +1,5 @@
-<div id="map" data-points='<%= @geojson %>'></div>
+<div id="map" data-points='<%= @geojson %>'>
+</div>
 
 
-  <script type='text/javascript'>
 
-  var configureMap = function() {
-    // sets up the map base
-
-    var map = L.mapbox.map('map', 'thesteady.map-ygc6vvpt');
-    map.setView([38.9, -104.87], 7);
-
-    
-    // Adds the layer of points to the map
-    // var markerLayer = L.mapbox.markerLayer(geoJson)
-    // markerLayer.addTo(map);
-
-    // debugger
-
-    map.markerLayer.on('ready', function(e) {
-      // The GeoJSON representing the point features
-      var geoJson = $('#map').data('points');
-      map.markerLayer.setGeoJSON(geoJson);
-    
-      console.log("Working with the map");
-      this.eachLayer(function(marker) {
-          console.log("Working with each layer");
-          var feature = marker.feature;
-
-          // Create custom popup content
-          var popupContent = '<img class="photo" src="' + feature.properties.url + '" width="325">' + '<h4>' + feature.properties.title + '</h4>' +
-          '<p>' + feature.properties.description +'</p>' ;
-
-          // http://leafletjs.com/reference.html#popup
-          marker.bindPopup(popupContent,{
-              closeButton: false,
-              minWidth: 320
-          });
-
-      });
-    });
-
-    
-
-  };
-  
-  $(document).ready(configureMap);
-  </script>
