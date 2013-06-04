@@ -25,6 +25,8 @@ var configureMap = function() {
 
   // Clear the tooltip when map is clicked
   map.on('click',function(e){
+    //i want to reset the text to the site description here
+    //var siteDescript = $('.site-descript').text();
       document.getElementById('info').innerHTML = '';
   });
       });
