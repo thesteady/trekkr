@@ -8,26 +8,26 @@ var configureMap = function() {
       // The GeoJSON representing the point features
       var geoJson = $('#map').data('points');
       map.markerLayer.setGeoJSON(geoJson);
-    
-      this.eachLayer(function(marker) {
-          var feature = marker.feature;
-          // Create custom popup content
-          var popupContent =
 
-          '<img class="photo" src="' + feature.properties.url + '" width="325">' + '<h4>' + feature.properties.title + '</h4>' +
-          '<p>' + feature.properties.description +'</p>' ;
+  // Listen for individual marker clicks
+  map.markerLayer.on('click',function(e) {
+      e.layer.unbindPopup();
 
-          // http://leafletjs.com/reference.html#popup
-          marker.bindPopup(popupContent,{
-              closeButton: false,
-              minWidth: 320
-          });
+      var feature = e.layer.feature;
+      var info =
+                  '<img class="photo" src="' + feature.properties.url + '" width="325">' +
+                  '<p class="credit"> Photo Credit: Instagram user <span class="username">' + feature.properties.title + '</span></p>' +
+                 '<div class="more">' + feature.properties.description + '</div>'
+                 ;
 
+      document.getElementById('info').innerHTML = info;
+  });
+
+  // Clear the tooltip when map is clicked
+  map.on('click',function(e){
+      document.getElementById('info').innerHTML = '';
+  });
       });
-    });
-
-    
-
-  };
+    };
   
   $(document).ready(configureMap);
