@@ -6,22 +6,19 @@ module PhotoSource
   end
 
   def self.fetch_tagged_photos_for(tag)
+    puts "RETRIEVING PAGE 1"
     page_1 = Instagram.tag_recent_media(tag)
-    clean_results = [parse_(page_1)]
+    clean_results = [ parse_(page_1) ]
 
     next_page_max_tag_id = page_1.pagination.next_max_tag_id
     page_count = 1
 
     until next_page_max_tag_id.nil? || page_count == 10 do
       page_count += 1
-      puts "PAGE COUNT #{page_count}"
-      #get the page of data
+      puts "RETRIEVING PAGE #{page_count}"
       results = Instagram.tag_recent_media(tag, :max_id => next_page_max_tag_id)
-      #parse it, add it to the results
       clean_results << parse_(results)
-      #set the new next page max id
       next_page_max_tag_id = results.pagination.next_max_tag_id
-      puts "NEXT PAGE MAX TAG ID #{next_page_max_tag_id}"
     end
     clean_results.flatten
   end
