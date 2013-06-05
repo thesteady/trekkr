@@ -5,7 +5,7 @@ module PhotoSource
     config.client_secret = ENV['CLIENT_SECRET']
   end
 
-  def self.fetch_tagged_photos_for(tag)
+  def self.fetch_tagged_photos_for(tag, num_of_pages = 1)
     puts "RETRIEVING PAGE 1"
     page_1 = Instagram.tag_recent_media(tag)
     clean_results = [ parse_(page_1) ]
@@ -13,7 +13,7 @@ module PhotoSource
     next_page_max_tag_id = page_1.pagination.next_max_tag_id
     page_count = 1
 
-    until next_page_max_tag_id.nil? || page_count == 10 do
+    until next_page_max_tag_id.nil? || page_count == num_of_pages do
       page_count += 1
       puts "RETRIEVING PAGE #{page_count}"
       results = Instagram.tag_recent_media(tag, :max_id => next_page_max_tag_id)

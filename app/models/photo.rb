@@ -29,9 +29,4 @@ class Photo
   def make_geojson_feature
    GeoJSON.build(self)
   end
-
-  def self.get_new_photos(tag)
-    results = PhotoSource.fetch_tagged_photos_for(tag)
-    results.each { |result| Photo.create(result) }
-  end
 end

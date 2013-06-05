@@ -9,20 +9,6 @@ describe Photo do
     it { should validate_uniqueness_of(:instagram_id) }
   end
 
-  describe 'get_new_photos' do
-    it 'adds new photos to the db' do
-      VCR.use_cassette "instagram/coloradotrail" do
-        tag = 'coloradotrail'
-        Photo.get_new_photos(tag)
-
-        first_result = Photo.first
-        expect(Photo.all.count).to eq 152
-        expect(first_result.username).to eq 'brittlauren16'
-        expect(first_result.text.downcase).to include('#coloradotrail')
-      end
-    end
-  end
-
   describe '.to_geojson' do
     it 'turns all of the photo objects that have coordinates into geojson response' do
       geojson_example = { type: 'FeatureCollection', 
