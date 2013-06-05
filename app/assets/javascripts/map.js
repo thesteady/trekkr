@@ -1,6 +1,6 @@
 var configureMap = function() {
     var map = L.mapbox.map('map', 'thesteady.map-ygc6vvpt');
-    map.setView([40.24, -111], 5);
+    map.setView([38.3, -121], 5);
 
     map.markerLayer.on('ready', function(e) {
       // The GeoJSON representing the point features
