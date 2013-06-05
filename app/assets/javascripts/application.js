@@ -15,6 +15,7 @@
 //= require_tree .
 //= require twitter/bootstrap
 //= require mapbox
+//= require map
 
 
 $(document).ready(function() {
