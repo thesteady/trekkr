@@ -1,8 +1,6 @@
 var configureMap = function() {
-    // sets up the map base
-
     var map = L.mapbox.map('map', 'thesteady.map-ygc6vvpt');
-    map.setView([36.7, -119.3], 5);
+    map.setView([40.24, -111], 5);
 
     map.markerLayer.on('ready', function(e) {
       // The GeoJSON representing the point features
@@ -15,10 +13,9 @@ var configureMap = function() {
 
       var feature = e.layer.feature;
       // set the text in the sidebar
-      var info =
-                  '<img class="photo" src="' + feature.properties.url + '" width="325">' +
-                  '<p class="credit"> Photo Credit: Instagram user <span class="username">' + feature.properties.title + '</span></p>' +
-                 '<div class="more">' + feature.properties.description + '</div>'
+      var info ='<img class="photo" src="' + feature.properties.url + '" width="325">' +
+                '<p class="credit"> Photo Credit: Instagram user <span class="username">' + feature.properties.title + '</span></p>' +
+                '<div class="more">' + feature.properties.description + '</div>'
                  ;
       document.getElementById('info').innerHTML = info;
 
@@ -32,7 +29,8 @@ var configureMap = function() {
   map.on('click',function(e){
     //i want to reset the text to the site description here
     //var siteDescript = $('.site-descript').text();
-      document.getElementById('info').innerHTML = '';
+     // document.getElementById('info').innerHTML = '';
+     // above line will clear the sidebar on map click
   });
       });
 };
