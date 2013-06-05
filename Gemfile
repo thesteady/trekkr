@@ -26,4 +26,6 @@ end
 
 group :test do
   gem 'mongoid-rspec'
+  gem 'vcr'
+  gem 'fakeweb'
 end

@@ -11,14 +11,15 @@ describe Photo do
 
   describe 'get_new_photos' do
     it 'adds new photos to the db' do
-      #whats a better way to test this?
-      tag = 'coloradotrail'
-      Photo.get_new_photos(tag)
+      VCR.use_cassette "instagram/coloradotrail" do
+        tag = 'coloradotrail'
+        Photo.get_new_photos(tag)
 
-      first_result = Photo.first
-      expect(Photo.all.count).to_not eq 0
-      # expect(first_result.username).to eq 'unospeeder'
-      expect(first_result.text.downcase).to include('#coloradotrail')
+        first_result = Photo.first
+        expect(Photo.all.count).to eq 152
+        expect(first_result.username).to eq 'brittlauren16'
+        expect(first_result.text.downcase).to include('#coloradotrail')
+      end
     end
   end
 
