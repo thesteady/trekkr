@@ -55,6 +55,8 @@ html,body{
       bottom: 0; width: 260px; background:#333; color: #fff;
       padding:20px;
       padding-top:40px;
+
+      h3{ text-align: center; }
 }
 .leaflet-top.leaflet-left{
   margin-left: 300px;
@@ -82,3 +84,9 @@ img.photo {
   }
 }
 
+.my-div-icon{
+  border: 1px solid green;
+  background-color: blue;
+  height: 2px;
+  width: 2px;
+}

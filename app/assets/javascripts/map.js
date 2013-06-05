@@ -13,16 +13,20 @@ var configureMap = function() {
 
       var feature = e.layer.feature;
       // set the text in the sidebar
+
       var info ='<img class="photo" src="' + feature.properties.url + '" width="325">' +
                 '<p class="credit"> Photo Credit: Instagram user <span class="username">' + feature.properties.title + '</span></p>' +
-                '<div class="more">' + feature.properties.description + '</div>'
+                '<br><div class="more">' + feature.properties.description + '</div>'
                  ;
       document.getElementById('info').innerHTML = info;
 
       //highlight the clicked marker
         // first reset any previous marker with the highlight
+        // var newIcon = L.divIcon({className: 'my-div-icon'});
+        // $('.leaflet-div-icon').parent().setIcon(newIcon);
         // then set the current marker to highlighted.
-
+        // var highlightedIcon = L.divIcon({className: 'leaflet-div-icon'});
+        // e.layer.setIcon(highlightedIcon);
   });
 
   // Clear the tooltip when map is clicked
