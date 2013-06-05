@@ -13,7 +13,7 @@ module PhotoSource
     next_page_max_tag_id = page_1.pagination.next_max_tag_id
     page_count = 1
 
-    until next_page_max_tag_id.nil? || page_count == 30 do
+    until next_page_max_tag_id.nil? || page_count == 10 do
       page_count += 1
       puts "RETRIEVING PAGE #{page_count}"
       results = Instagram.tag_recent_media(tag, :max_id => next_page_max_tag_id)
