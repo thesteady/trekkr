@@ -42,10 +42,18 @@ module PhotoSource
   end
 
   def self.get_text(result)
-    result.caption && result.caption.text ? result.caption.text : "unavailable"
+    begin
+      result.caption.text
+    rescue
+      'unavailable'
+    end
   end
 
   def self.get_username(result)
-    result.caption && result.caption.from && result.caption.from.username ? result.caption.from.username : "unknown"
+    begin
+      result.caption.from.username
+    rescue
+      'unknown'
+    end
   end
 end
