@@ -28,10 +28,11 @@ describe Photo do
                           features: [{
                             type: 'Feature', 
                               properties: {
-                                  username: 'honeybooboo',
-                                  'marker-color'=> '#fff',
-                                  'marker-size'=> 'small',
-                                  url: 'http://placekitten.com/200/300'
+                                  title: 'honeybooboo',
+                                  url: 'http://placekitten.com/200/300',
+                                  description: 'what',
+                                  'marker-color'=> '#543511',
+                                  'marker-size'=> 'small'
                               },
                               geometry: {
                                   type: 'Point',
@@ -41,10 +42,11 @@ describe Photo do
                           {
                               type: 'Feature',
                               properties: {
-                                  username:'anonymoose',
-                                  'marker-color'=> '#fff',
-                                  'marker-size'=> 'small',
-                                  url: 'http://placekitten.com/200/200'
+                                  title:'anonymoose',
+                                  url: 'http://placekitten.com/200/200',
+                                  description: 'huh',
+                                  'marker-color'=> '#543511',
+                                  'marker-size'=> 'small'
                               },
                               geometry: {
                                   type: 'Point',

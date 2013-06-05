@@ -21,15 +21,13 @@ class Photo
   attr_accessible :url, :instagram_id, :height, :location, :text, :username
 
 
-
   def self.to_geojson
     photos = Photo.where(:location.exists => true)
-    features = photos.collect { |photo| make_geojson_feature(photo) }
-    {type: 'FeatureCollection', features: features}.to_json
+    GeoJSON.build_feature_collection(photos)
   end
 
-  def self.make_geojson_feature(photo)
-   GeoJSON.build(photo)
+  def make_geojson_feature
+   GeoJSON.build(self)
   end
 
   def self.get_new_photos(tag)
