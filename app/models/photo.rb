@@ -29,20 +29,7 @@ class Photo
   end
 
   def self.make_geojson_feature(photo)
-    { type: 'Feature',
-      properties: {
-                    title: photo.username,
-                    url: photo.url,
-                    description: photo.text,
-                    'marker-color'=> '#543511',
-                    'marker-size'=> 'small'
-
-                  },
-      geometry: {
-                  type: 'Point',
-                  coordinates: [photo.location.x, photo.location.y]
-                }
-    }
+   GeoJSON.build(photo)
   end
 
   def self.get_new_photos(tag)
